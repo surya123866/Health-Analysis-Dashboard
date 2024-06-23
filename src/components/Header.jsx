@@ -54,9 +54,9 @@ const Header = () => {
         >
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 flex justify-center items-center rounded-full p-3 bg-[#15172c]">
-              <p className="text-[#ce1f93] text-sm">M</p>
+              <p className="text-[#ce1f93] text-sm">S</p>
             </div>
-            <p> Hello, Martin</p>
+            <p> Hello, Surya</p>
           </div>
           <div className="flex items-center gap-2">
             <LuBell />

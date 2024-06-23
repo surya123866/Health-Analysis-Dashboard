@@ -1,22 +1,51 @@
 export const combinedData = {
-  data: [
-    { value: 100 },
-    { value: 200 },
-    { value: 150 },
-    { value: 250 },
-    { value: 200 },
-    { value: 300 },
-    { value: 250 },
-    { value: 350 },
-  ],
+  SleepData: {
+    time: "8 h",
+    percentage: "+10",
+    data: [
+      { value: 150 },
+      { value: 50 },
+      { value: 200 },
+      { value: 250 },
+      { value: 350 },
+    ],
+  },
+  ActivityData: {
+    time: "12 h",
+    percentage: "+30",
+    data: [
+      { value: 200 },
+      { value: 300 },
+      { value: 100 },
+      { value: 200 },
+      { value: 150 },
+      { value: 250 },
+      { value: 250 },
+      { value: 350 },
+    ],
+  },
+  EfficiencyData: {
+    efficiency: "2 EX",
+    percentage: "+70",
+    data: [
+      { value: 100 },
+      { value: 200 },
+      { value: 300 },
+      { value: 250 },
+      { value: 150 },
+      { value: 250 },
+      { value: 200 },
+      { value: 350 },
+    ],
+  },
   FoodData: {
     pieData: [
       { name: "Protein", value: 100 },
       { name: "Fats", value: 42 },
       { name: "Carbs", value: 90 },
-      { name: "Water", value: 500 },
+      { name: "Water", value: 80 },
     ],
-    label: "60%",
+    label: "60",
     COLORS: ["#8884d8", "#FF007A", "#9C27B0", "#B39DDB"],
   },
   personalData: {
@@ -67,7 +96,7 @@ export const combinedData = {
     completion: 100,
   },
   runningPercentagedata: [
-    { name: "Completed", value: 40 },
-    { name: "Remaining", value: 60 },
+    { name: "Completed", value: 80 },
+    { name: "Remaining", value: 20 },
   ],
 };

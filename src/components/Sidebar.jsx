@@ -4,7 +4,7 @@ import { useContext } from "react";
 import MyContext from "./ThemeContext";
 
 import { TbLayoutDashboard } from "react-icons/tb";
-import { FcLike } from "react-icons/fc";
+import { FaRegHeart } from "react-icons/fa6";
 import { TbBarbell } from "react-icons/tb";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { LuMail } from "react-icons/lu";
@@ -31,7 +31,7 @@ const Sidebar = () => {
             <TbLayoutDashboard /> <Link to="/">Dashboard</Link>
           </li>
           <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
-            <FcLike /> <Link to="/health">Health</Link>
+            <FaRegHeart /> <Link to="/health">Health</Link>
           </li>
           <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
             <TbBarbell />
