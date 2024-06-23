@@ -15,7 +15,7 @@ This project is a dynamic and interactive dashboard built using React. It showca
 ![Screenshot 2024-06-23 191912](https://github.com/surya123866/marklytics-assignment/assets/79002343/3a31f3cd-2d03-44d0-a5f4-ee8d538aa79e)
 
 ## Video Demonstration
-Watch a video demonstration of the dashboard [here](https://www.loom.com/share/a479c540551b4d68b787288f35f096d3?sid=cba2d544-2f7f-4b2e-986b-b906501650f1).
+https://github.com/surya123866/marklytics-assignment/assets/79002343/b068a468-42db-4901-94c2-190e654d190b
 
 ## Deployed Application
 Check out the live demo of the React Dashboard:
