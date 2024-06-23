@@ -10,6 +10,10 @@ This project is a dynamic and interactive dashboard built using React. It showca
 - **Responsive Design:** Ensures usability and functionality across desktop and mobile devices.
 - **Styling and UX:** Utilizes CSS for a visually appealing and user-friendly interface.
 
+## Screen Shots
+![Screenshot 2024-06-23 191918](https://github.com/surya123866/marklytics-assignment/assets/79002343/670c0235-4211-4854-bdc5-1f879ebf617b)
+![Screenshot 2024-06-23 191912](https://github.com/surya123866/marklytics-assignment/assets/79002343/3a31f3cd-2d03-44d0-a5f4-ee8d538aa79e)
+
 ## Video Demonstration
 Watch a video demonstration of the dashboard [here](https://www.loom.com/share/a479c540551b4d68b787288f35f096d3?sid=cba2d544-2f7f-4b2e-986b-b906501650f1).
 
@@ -41,4 +45,4 @@ Ensure you have Node.js and npm installed on your machine.
  ```bash
    npm start
 
-This will start the development server and open the project in your default web browser. If it doesn't open automatically, navigate to http://localhost:3000.
+--This will start the development server and open the project in your default web browser. If it doesn't open automatically, navigate to http://localhost:3000.
