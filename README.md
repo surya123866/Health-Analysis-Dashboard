@@ -1,4 +1,4 @@
-# Health Dashboard
+# Health Analysis Dashboard
 
 ## Project Description
 This project is a dynamic and interactive dashboard built using React. It showcases comprehensive data for health monitoring, performance analysis, and wellness management through various visualizations including line charts, bar charts, and a data table. The dashboard aims to provide a holistic view of nutrition, activity, and personal health metrics essential for informed decision-making and improving overall well-being.
