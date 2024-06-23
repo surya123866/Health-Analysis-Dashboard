@@ -38,11 +38,13 @@ Ensure you have Node.js and npm installed on your machine.
    cd react-dashboard
 
 2. **Install dependencies**
-3.  ```bash
+   ```bash
     npm install
     
-3.**Run the project**
- ```bash
-   npm start
+3. **Run the project**
+    ```bash
+    npm start
 
---This will start the development server and open the project in your default web browser. If it doesn't open automatically, navigate to http://localhost:3000.
+4. **Run the project**
+   This will start the development server and open the project in your default web browser. If it doesn't open automatically, navigate to http://localhost:3000.
+   
