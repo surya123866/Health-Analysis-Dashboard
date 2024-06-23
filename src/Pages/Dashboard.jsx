@@ -16,8 +16,7 @@ import {
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import Card from "../components/Card";
-import { combinedData } from "../components/data";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import MyContext from "../components/ThemeContext";
 import { FaRunning } from "react-icons/fa";
 import { GrYoga } from "react-icons/gr";
@@ -83,9 +82,16 @@ const CustomBar = (props) => {
 };
 
 const Dashboard = () => {
-  const { isDarkMode } = useContext(MyContext);
+  const { isDarkMode, fetchData, fetchedData } = useContext(MyContext);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
-    <SkeletonTheme baseColor="#262949" highlightColor="#4e5282">
+    <SkeletonTheme
+      baseColor={isDarkMode ? "#ffffff" : "#262949"}
+      highlightColor={isDarkMode ? "#f1eff8" : "#4e5282"}
+    >
       <div className="flex">
         <Sidebar />
         <div className="flex-1 flex flex-col">
@@ -109,16 +115,16 @@ const Dashboard = () => {
                 <div
                   className={`p-2 ${isDarkMode ? "text-black" : "text-white"}`}
                 >
-                  <p className="text-3xl">{combinedData?.SleepData?.time}</p>
+                  <p className="text-3xl">{fetchedData?.SleepData?.time}</p>
                   <p className="flex gap-2 items-center">
                     <span>
                       <FaArrowTrendUp color="#cd2596" size={10} />{" "}
                     </span>
-                    {combinedData?.SleepData?.percentage}
+                    {fetchedData?.SleepData?.percentage}
                   </p>
                 </div>
                 <ResponsiveContainer width="70%" height={150}>
-                  <AreaChart data={combinedData?.SleepData?.data}>
+                  <AreaChart data={fetchedData?.SleepData?.data}>
                     <defs>
                       <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                         <stop
@@ -149,16 +155,16 @@ const Dashboard = () => {
                 <div
                   className={`p-2 ${isDarkMode ? "text-black" : "text-white"}`}
                 >
-                  <p className="text-3xl">{combinedData?.ActivityData?.time}</p>
+                  <p className="text-3xl">{fetchedData?.ActivityData?.time}</p>
                   <p className=" flex gap-2 items-center">
                     <span>
                       <FaArrowTrendUp color="#4742a9" size={10} />{" "}
                     </span>
-                    {combinedData?.ActivityData?.percentage}
+                    {fetchedData?.ActivityData?.percentage}
                   </p>
                 </div>
                 <ResponsiveContainer width="70%" height={150}>
-                  <AreaChart data={combinedData?.ActivityData?.data}>
+                  <AreaChart data={fetchedData?.ActivityData?.data}>
                     <defs>
                       <linearGradient id="colorUv2" x1="0" y1="0" x2="0" y2="1">
                         <stop
@@ -190,17 +196,17 @@ const Dashboard = () => {
                   className={`p-2 ${isDarkMode ? "text-black" : "text-white"}`}
                 >
                   <p className="text-3xl">
-                    {combinedData?.EfficiencyData?.efficiency}
+                    {fetchedData?.EfficiencyData?.efficiency}
                   </p>
                   <p className=" flex gap-2 items-center">
                     <span>
                       <FaArrowTrendUp color="#6b179d" size={10} />{" "}
                     </span>
-                    {combinedData?.EfficiencyData?.percentage}
+                    {fetchedData?.EfficiencyData?.percentage}
                   </p>
                 </div>
                 <ResponsiveContainer width="70%" height={150}>
-                  <AreaChart data={combinedData?.EfficiencyData?.data}>
+                  <AreaChart data={fetchedData?.EfficiencyData?.data}>
                     <defs>
                       <linearGradient id="colorUv3" x1="0" y1="0" x2="0" y2="1">
                         <stop
@@ -230,13 +236,13 @@ const Dashboard = () => {
               <ResponsiveContainer width="100%" height={200}>
                 <PieChart>
                   <Pie
-                    data={combinedData?.FoodData?.pieData}
+                    data={fetchedData?.FoodData?.pieData}
                     innerRadius={80}
                     outerRadius={100}
                     label={(props) =>
                       FoodCustomizedLabel({
                         ...props,
-                        label: combinedData?.FoodData?.label,
+                        label: fetchedData?.FoodData?.label,
                         isDarkMode: isDarkMode,
                       })
                     }
@@ -247,7 +253,7 @@ const Dashboard = () => {
                     stroke="none"
                     labelLine={false}
                   >
-                    {combinedData?.FoodData?.pieData?.map((entry, index) => (
+                    {fetchedData?.FoodData?.pieData?.map((entry, index) => (
                       <Cell
                         key={`cell-${index}`}
                         fill={COLORS[index % COLORS.length]}
@@ -257,7 +263,7 @@ const Dashboard = () => {
                 </PieChart>
               </ResponsiveContainer>
               <div className="mt-4 p-5">
-                {combinedData?.FoodData?.pieData?.map((item, index) => (
+                {fetchedData?.FoodData?.pieData?.map((item, index) => (
                   <div key={index}>
                     <div className="flex justify-between text-sm">
                       <span>{item.name}</span>
@@ -291,7 +297,7 @@ const Dashboard = () => {
                   }`}
                 >
                   <p>Gender</p>
-                  <p>{combinedData?.personalData?.gender}</p>
+                  <p>{fetchedData?.personalData?.gender}</p>
                 </div>
                 <div
                   className={`mb-2 flex justify-between ${
@@ -299,7 +305,7 @@ const Dashboard = () => {
                   }`}
                 >
                   <p>Age</p>
-                  <p>{combinedData?.personalData?.age}</p>
+                  <p>{fetchedData?.personalData?.age}</p>
                 </div>
                 <div
                   className={`mb-2 flex justify-between ${
@@ -307,7 +313,7 @@ const Dashboard = () => {
                   }`}
                 >
                   <p>Height</p>
-                  <p>{combinedData?.personalData?.height}</p>
+                  <p>{fetchedData?.personalData?.height}</p>
                 </div>
                 <div
                   className={`mb-2 flex justify-between ${
@@ -315,7 +321,7 @@ const Dashboard = () => {
                   }`}
                 >
                   <p>Weight</p>
-                  <p>{combinedData?.personalData?.weight}</p>
+                  <p>{fetchedData?.personalData?.weight}</p>
                 </div>
                 <div
                   className={`mb-2 flex justify-between ${
@@ -323,7 +329,7 @@ const Dashboard = () => {
                   }`}
                 >
                   <p>Blood pressure</p>
-                  <p>{combinedData?.personalData?.bloodPressure}</p>
+                  <p>{fetchedData?.personalData?.bloodPressure}</p>
                 </div>
                 <div
                   className={`mb-2 flex justify-between ${
@@ -331,7 +337,7 @@ const Dashboard = () => {
                   }`}
                 >
                   <p>Activity energy</p>
-                  <p>{combinedData?.personalData?.activityEnergy}</p>
+                  <p>{fetchedData?.personalData?.activityEnergy}</p>
                 </div>
                 <div
                   className={`mb-2 flex justify-between ${
@@ -339,7 +345,7 @@ const Dashboard = () => {
                   }`}
                 >
                   <p>Rest energy</p>
-                  <p>{combinedData?.personalData?.restEnergy}</p>
+                  <p>{fetchedData?.personalData?.restEnergy}</p>
                 </div>
                 <div
                   className={`mb-2 flex justify-between ${
@@ -347,7 +353,7 @@ const Dashboard = () => {
                   }`}
                 >
                   <p>Bust</p>
-                  <p>{combinedData?.personalData?.bust}</p>
+                  <p>{fetchedData?.personalData?.bust}</p>
                 </div>
                 <div
                   className={`mb-2 flex justify-between ${
@@ -355,7 +361,7 @@ const Dashboard = () => {
                   }`}
                 >
                   <p>Waist</p>
-                  <p>{combinedData?.personalData?.waist}</p>
+                  <p>{fetchedData?.personalData?.waist}</p>
                 </div>
               </div>
             </Card>
@@ -372,7 +378,7 @@ const Dashboard = () => {
               </div>
               <div className="p-2">
                 <ResponsiveContainer width="100%" height={250}>
-                  <AreaChart data={combinedData?.AnalyticsData}>
+                  <AreaChart data={fetchedData?.AnalyticsData}>
                     <defs>
                       <linearGradient
                         id="colorSleep"
@@ -444,7 +450,7 @@ const Dashboard = () => {
                   <ResponsiveContainer width="100%" height={200}>
                     <PieChart>
                       <Pie
-                        data={combinedData?.stretchData?.stretchPercentagedata}
+                        data={fetchedData?.stretchData?.stretchPercentagedata}
                         dataKey="value"
                         cx="50%"
                         cy="50%"
@@ -456,8 +462,8 @@ const Dashboard = () => {
                           renderCustomizedLabel({
                             ...props,
                             label:
-                              combinedData?.stretchData
-                                ?.stretchPercentagedata[0]?.value,
+                              fetchedData?.stretchData?.stretchPercentagedata[0]
+                                ?.value,
                             isDarkMode: isDarkMode,
                           })
                         }
@@ -481,7 +487,7 @@ const Dashboard = () => {
                       <p className="text-sm">Training time</p>
                     </div>
                     <p className="ml-6">
-                      {combinedData?.stretchData?.trainingTime}
+                      {fetchedData?.stretchData?.trainingTime}
                     </p>
                   </div>
                   <div className="p-2 border-b border-black">
@@ -490,7 +496,7 @@ const Dashboard = () => {
                       <p className="text-sm">Total calories</p>
                     </div>
                     <p className="ml-6">
-                      {combinedData?.stretchData?.totalCalories}
+                      {fetchedData?.stretchData?.totalCalories}
                     </p>
                   </div>
                   <div className="p-2 border-b border-black">
@@ -499,14 +505,14 @@ const Dashboard = () => {
                       <p className="text-sm">Exercises</p>
                     </div>
                     <p className="ml-6">
-                      {combinedData?.stretchData?.exercises}
+                      {fetchedData?.stretchData?.exercises}
                     </p>
                   </div>
                 </div>
                 <div className="flex flex-col justify-center items-center w-[250px] gap-4">
                   <div className="w-full">
                     <ResponsiveContainer width="100%" height={100}>
-                      <BarChart data={combinedData?.stretchData?.histogramData}>
+                      <BarChart data={fetchedData?.stretchData?.histogramData}>
                         <Bar dataKey="value" fill="#8884d8" barSize={5} />
                       </BarChart>
                     </ResponsiveContainer>
@@ -518,7 +524,7 @@ const Dashboard = () => {
                         <p className="text-sm">Active pressure</p>
                       </div>
                       <p className="ml-6">
-                        {combinedData?.stretchData?.activePressure}
+                        {fetchedData?.stretchData?.activePressure}
                       </p>
                     </div>
                     <div className="border-b border-black">
@@ -527,7 +533,7 @@ const Dashboard = () => {
                         <p className="text-sm">Heart Rate</p>
                       </div>
                       <p className="ml-6">
-                        {combinedData?.stretchData?.heartRate}
+                        {fetchedData?.stretchData?.heartRate}
                       </p>
                     </div>
                     <div className="border-b border-black">
@@ -536,7 +542,7 @@ const Dashboard = () => {
                         <p className="text-sm">Normal pressure</p>
                       </div>
                       <p className="ml-6">
-                        {combinedData?.stretchData?.normalPressure}
+                        {fetchedData?.stretchData?.normalPressure}
                       </p>
                     </div>
                     <div className="border-b border-black">
@@ -545,7 +551,7 @@ const Dashboard = () => {
                         <p className="text-sm">Resting Rate</p>
                       </div>
                       <p className="ml-6">
-                        {combinedData?.stretchData?.restingRate}
+                        {fetchedData?.stretchData?.restingRate}
                       </p>
                     </div>
                   </div>
@@ -558,7 +564,7 @@ const Dashboard = () => {
                   <ResponsiveContainer width="100%" height={200}>
                     <PieChart>
                       <Pie
-                        data={combinedData?.runningData?.runningPercentagedata}
+                        data={fetchedData?.runningData?.runningPercentagedata}
                         dataKey="value"
                         cx="50%"
                         cy="50%"
@@ -570,8 +576,8 @@ const Dashboard = () => {
                           renderCustomizedLabel({
                             ...props,
                             label:
-                              combinedData?.runningData
-                                ?.runningPercentagedata[0]?.value,
+                              fetchedData?.runningData?.runningPercentagedata[0]
+                                ?.value,
                             isDarkMode: isDarkMode,
                           })
                         }
@@ -595,7 +601,7 @@ const Dashboard = () => {
                       <p className="text-sm">Training time</p>
                     </div>
                     <p className="ml-6">
-                      {combinedData?.runningData?.trainingTime}
+                      {fetchedData?.runningData?.trainingTime}
                     </p>
                   </div>
                   <div className="p-2 border-b border-black">
@@ -604,7 +610,7 @@ const Dashboard = () => {
                       <p className="text-sm">Total calories</p>
                     </div>
                     <p className="ml-6">
-                      {combinedData?.runningData?.totalCalories}
+                      {fetchedData?.runningData?.totalCalories}
                     </p>
                   </div>
                   <div className="p-2 border-b border-black">
@@ -612,16 +618,14 @@ const Dashboard = () => {
                       <RiPinDistanceLine color="#4541a7" />
                       <p className="text-sm">Distance</p>
                     </div>
-                    <p className="ml-6">
-                      {combinedData?.runningData?.distance}
-                    </p>
+                    <p className="ml-6">{fetchedData?.runningData?.distance}</p>
                   </div>
                 </div>
 
                 <div className="flex flex-col justify-center items-center w-[260px] gap-2 p-2">
                   <div className="w-full">
                     <ResponsiveContainer width="100%" height={100}>
-                      <BarChart data={combinedData?.runningData?.histogramData}>
+                      <BarChart data={fetchedData?.runningData?.histogramData}>
                         <Bar
                           dataKey="value"
                           shape={<CustomBar />}
@@ -631,7 +635,7 @@ const Dashboard = () => {
                     </ResponsiveContainer>
                   </div>
                   <div className="flex flex-wrap justify-center items-center w-full">
-                    {combinedData.runningData.zones.map((zone, index) => (
+                    {fetchedData?.runningData?.zones?.map((zone, index) => (
                       <div key={index} className="w-full">
                         <div className="flex justify-between">
                           <div className="flex items-center gap-2">

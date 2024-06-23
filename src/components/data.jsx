@@ -1,4 +1,4 @@
-export const combinedData = {
+export const dummyData = {
   SleepData: {
     time: "8 h",
     percentage: "+10",
