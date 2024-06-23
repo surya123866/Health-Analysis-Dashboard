@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const MyContext = createContext({
   isDarkMode: false,
@@ -8,11 +7,21 @@ const MyContext = createContext({
 });
 
 export const MyContextProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  
+  const savedDarkMode = localStorage.getItem("darkMode") === "true";
+  const [isDarkMode, setIsDarkMode] = useState(savedDarkMode);
+
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => !prevMode);
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    localStorage.setItem("darkMode", newMode.toString());
   };
+
+  useEffect(() => {
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+    setIsDarkMode(savedDarkMode);
+  }, []);
 
   return (
     <MyContext.Provider value={{ isDarkMode, toggleDarkMode }}>

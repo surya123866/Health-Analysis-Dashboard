@@ -13,7 +13,7 @@ import { useContext } from "react";
 function App() {
   const { isDarkMode } = useContext(MyContext);
   return (
-    <div className={`${isDarkMode ? "bg-[#f1eff8]" : "bg-[#15172c]"}`}>
+    <div className={`w-full ${isDarkMode ? "bg-[#f1eff8]" : "bg-[#15172c]"}`}>
       <Routes>
         <Route path="/" element={<Dashboard />} />
         {/* <Route path="/health" element={<Health />} />

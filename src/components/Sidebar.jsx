@@ -19,57 +19,94 @@ const Sidebar = () => {
   return (
     <div
       className={`min-h-screen w-64 ${
-        isDarkMode ? "bg-white text-black" : "bg-[#262949] text-[#ce1f93]"
+        isDarkMode ? "bg-white text-black" : "bg-[#262949] text-gray-200"
       } flex flex-col`}
     >
-      <div className="p-4 text-2xl font-bold">
-        Fit <span className="text-white">Health</span>
+      <div className="p-4 text-2xl font-bold text-[#ef70c6]">
+        Fit{" "}
+        <span className={`${isDarkMode ? "text-black" : "text-white"}`}>
+          Health
+        </span>
       </div>
       <nav className="flex-1">
         <ul>
-          <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
-            <TbLayoutDashboard /> <Link to="/">Dashboard</Link>
+          <li
+            className={`flex gap-2 items-center px-4 py-2 hover:text-[#ef70c6] hover:bg-gradient-to-r ${
+              isDarkMode ? "from-white" : "from-[#262949]"
+            } to-[#ef70c6]`}
+          >
+            <TbLayoutDashboard size={24} /> <Link to="/">Dashboard</Link>
           </li>
-          <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
-            <FaRegHeart /> <Link to="/health">Health</Link>
+          <li
+            className={`flex gap-2 items-center px-4 py-2 hover:text-[#ef70c6] hover:bg-gradient-to-r ${
+              isDarkMode ? "from-white" : "from-[#262949]"
+            } to-[#ef70c6]`}
+          >
+            <FaRegHeart size={24} /> <Link to="/health">Health</Link>
           </li>
-          <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
-            <TbBarbell />
+          <li
+            className={`flex gap-2 items-center px-4 py-2 hover:text-[#ef70c6] hover:bg-gradient-to-r ${
+              isDarkMode ? "from-white" : "from-[#262949]"
+            } to-[#ef70c6]`}
+          >
+            <TbBarbell size={24} />
             <Link to="/trainings">Trainings</Link>
           </li>
-          <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
-            <FaArrowTrendUp /> <Link to="/dynamics">Dynamics</Link>
+          <li
+            className={`flex gap-2 items-center px-4 py-2 hover:text-[#ef70c6] hover:bg-gradient-to-r ${
+              isDarkMode ? "from-white" : "from-[#262949]"
+            } to-[#ef70c6]`}
+          >
+            <FaArrowTrendUp size={24} /> <Link to="/dynamics">Dynamics</Link>
           </li>
-          <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
-            <LuMail />
+          <li
+            className={`flex gap-2 items-center px-4 py-2 hover:text-[#ef70c6] hover:bg-gradient-to-r ${
+              isDarkMode ? "from-white" : "from-[#262949]"
+            } to-[#ef70c6]`}
+          >
+            <LuMail size={24} />
             <Link to="/messages">Messages</Link>
           </li>
-          <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
-            <CgProfile />
+          <li
+            className={`flex gap-2 items-center px-4 py-2 hover:text-[#ef70c6] hover:bg-gradient-to-r ${
+              isDarkMode ? "from-white" : "from-[#262949]"
+            } to-[#ef70c6]`}
+          >
+            <CgProfile size={24} />
             <Link to="/profile">Profile</Link>
           </li>
-          <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
-            <IoIosHelpCircleOutline /> <Link to="/help">Help</Link>
+          <li
+            className={`flex gap-2 items-center px-4 py-2 hover:text-[#ef70c6] hover:bg-gradient-to-r ${
+              isDarkMode ? "from-white" : "from-[#262949]"
+            } to-[#ef70c6]`}
+          >
+            <IoIosHelpCircleOutline size={24} /> <Link to="/help">Help</Link>
           </li>
         </ul>
-
         <div className="mt-8">
           <ul>
-            <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
-              <IoSettingsOutline />
+            <li
+              className={`flex gap-2 items-center px-4 py-2 hover:text-[#ef70c6] hover:bg-gradient-to-r ${
+                isDarkMode ? "from-white" : "from-[#262949]"
+              } to-[#ef70c6]`}
+            >
+              <IoSettingsOutline size={24} />
               <Link to="/settings">Settings</Link>
             </li>
-            <li className="flex gap-2 items-center px-4 py-2 hover:bg-[#e89fd0]">
-              <FiLogOut />
+            <li
+              className={`flex gap-2 items-center px-4 py-2 hover:text-[#ef70c6] hover:bg-gradient-to-r ${
+                isDarkMode ? "from-white" : "from-[#262949]"
+              } to-[#ef70c6]`}
+            >
+              <FiLogOut size={24} />
               <Link to="/logout">Log out</Link>
             </li>
           </ul>
         </div>
+        <div className="px-4 py-10">
+          <ToggleButton />
+        </div>
       </nav>
-
-      <div className="px-4 py-2">
-        <ToggleButton />
-      </div>
     </div>
   );
 };

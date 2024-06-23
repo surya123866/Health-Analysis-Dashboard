@@ -1,20 +1,34 @@
 import PropTypes from "prop-types";
 import MyContext from "./ThemeContext";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-const Card = ({ title, children, customWidth, customHeight, className }) => {
+const Card = ({ title, children, className }) => {
   const { isDarkMode } = useContext(MyContext);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000); // 2 seconds delay
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div
       className={`${className} ${
         isDarkMode ? "bg-white text-black" : "bg-[#262949] text-white"
       } rounded-lg shadow-md`}
-      style={{ width: customWidth, height: customHeight }} // Apply custom width here
     >
-      <div className="flex text-lg font-bold p-2">
-        <p>{title}</p>
-      </div>
-      {children}
+      {loading ? (
+        <Skeleton height={200} width={"100%"} />
+      ) : (
+        <>
+          <div className="flex text-lg font-bold p-2">
+            <p>{title}</p>
+          </div>
+          <div>{children}</div>
+        </>
+      )}
     </div>
   );
 };
@@ -22,13 +36,7 @@ const Card = ({ title, children, customWidth, customHeight, className }) => {
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  customWidth: PropTypes.string,
-  customHeight: PropTypes.string,
   className: PropTypes.string,
-};
-
-Card.defaultProps = {
-  customWidth: "100%", // Default width if not provided
 };
 
 export default Card;
